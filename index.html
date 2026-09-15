@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kelly Ou — AI Product Operations &amp; Overseas Marketing</title>
+<meta name="description" content="Kelly Ou — AI Product Operations & Overseas Marketing. Case studies, skill toolbox and an approach that sits at the crossroads of people, AI and growth." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ================= TOKENS ================= */
+:root{
+  --paper:#f6f4f0;           /* warm off-white base */
+  --white:#ffffff;
+  --brown:#543727;            /* signature brown (deep) */
+  --brown-soft:#7a5c34;
+  --blush:#f7e9ea;            /* soft pink wash (hero) */
+  --tan-a:#f1dfe2;            /* light pink (about bg) */
+  --tan-c:#ecd5db;            /* light rose (contact bg) */
+  --ink:#17140e;             /* warm black */
+  --ink-soft:#6b675c;
+  --ink-faint:#a9a499;
+  --line:rgba(23,20,14,.14);
+  --line-soft:rgba(23,20,14,.08);
+  --coral:#e05b8a;            /* signature pink */
+  --sun:#e9a820;
+  --teal:#2ea795;
+  --lilac:#7c68d6;
+  --blue:#3c6fe0;
+  --green:#3aaf63;
+  --serif:"Instrument Serif", Georgia, serif;
+  --sans:"Inter", Helvetica, sans-serif;
+  --mono:"Space Grotesk", monospace;
+  --max:1720px;
+  --pad:64px;
+  --radius:4px;              /* small radius = editorial, not playful */
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+svg.inline{vertical-align:middle}
+::selection{background:var(--ink);color:var(--paper)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+
+/* scroll progress bar */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--coral);z-index:400}
+
+/* ================= NAV ================= */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .45s,border-color .45s,backdrop-filter .45s;border-bottom:1px solid transparent}
+header.nav.scrolled{background:rgba(84,55,39,.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(246,244,240,.14)}
+header.nav.scrolled .brand .mark{border-color:rgba(246,244,240,.35);color:var(--paper);background:transparent}
+header.nav.scrolled .brand .word small{color:rgba(246,244,240,.5)}
+header.nav.scrolled nav ul li a{color:rgba(246,244,240,.82)}
+header.nav.scrolled nav ul li a em{color:rgba(246,244,240,.45)}
+header.nav.scrolled nav ul li a:hover{color:#fff}
+header.nav.scrolled .nav-cta{border-color:rgba(246,244,240,.7);color:var(--paper)!important}
+header.nav.scrolled .nav-cta:hover{background:var(--paper);color:var(--brown)!important}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:20px var(--pad);display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .mark{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:21px;color:var(--ink);background:var(--white)}
+.brand .word{font-family:var(--mono);font-size:13px;letter-spacing:.06em}
+.brand .word small{display:block;font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--ink-faint);margin-top:1px}
+nav ul{display:flex;gap:40px;list-style:none;align-items:center}
+nav ul li a{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);position:relative;padding:6px 0;transition:color .25s}
+nav ul li a em{font-style:normal;color:var(--ink-faint);margin-right:7px;font-size:10px}
+nav ul li a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--coral);transition:width .3s cubic-bezier(.2,.7,.2,1)}
+nav ul li a:hover{color:var(--ink)}
+nav ul li a:hover::after{width:100%}
+.nav-link-i{display:none}
+.drop{position:relative}
+.drop .panel{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(8px);background:#ffffff;border:1px solid rgba(43,28,16,.15);min-width:230px;padding:8px;opacity:0;visibility:hidden;transition:.28s;box-shadow:0 30px 60px -30px rgba(0,0,0,.25)}
+.drop:hover .panel{opacity:1;visibility:visible;transform:translateX(-50%)}
+.drop .panel a{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;color:#2b1c10;font-size:12px;letter-spacing:.1em;background:transparent}
+.drop .panel a:hover{background:#f3ece1;color:#2b1c10}
+.drop .panel a .ix{color:#8a6b45}
+header.nav.scrolled .drop .panel a{color:#2b1c10}
+header.nav.scrolled .drop .panel a:hover{color:#2b1c10}
+header.nav.scrolled .drop .panel a .ix{color:#8a6b45}
+.nav-cta{border:1px solid var(--ink);padding:11px 24px;border-radius:var(--radius);letter-spacing:.1em;color:var(--ink)!important;transition:.25s!important}
+.nav-cta:hover{background:var(--ink);color:var(--paper)!important}
+.nav-cta::after{display:none}
+
+/* ================= SECTION CHROME ================= */
+section.sec{position:relative;padding:82px 0}
+.sechead{margin-bottom:44px}
+.secindex{display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px}
+.secindex b{width:46px;height:46px;flex:none;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:13px;color:var(--ink)}
+.secindex .hr{flex:1;height:1px;background:var(--line);max-width:120px}
+.h-display{font-family:var(--serif);font-weight:500;line-height:.96;letter-spacing:-.02em;font-size:clamp(40px,5.6vw,108px);color:var(--brown)}
+.h-display em{font-style:italic;color:var(--coral)}
+.subl{display:flex;align-items:baseline;justify-content:space-between;gap:40px;color:var(--ink-soft);font-size:15px;max-width:860px;margin-top:18px}
+.subl i{font-style:normal;font-family:var(--serif);font-size:40px;color:var(--ink-faint);line-height:1}
+
+/* reveals */
+.r{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.19,.6,.2,1),transform 1s cubic-bezier(.19,.6,.2,1)}
+.r.in{opacity:1;transform:none}
+.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}.r.d4{transition-delay:.32s}
+
+/* ================= HERO (Swiss / editorial split) ================= */
+#home{min-height:100vh;display:flex;position:relative;background:var(--blush)}
+.hero-inner{max-width:var(--max);margin:0 auto;width:100%;padding:13vh var(--pad) 0;display:flex;flex-direction:column}
+.hero-frame{display:grid;grid-template-columns:1.45fr .8fr;gap:clamp(30px,5vw,90px);align-items:start;position:relative}
+.hero-left{display:flex;flex-direction:column;min-height:45vh}
+.hero-prop{font-family:var(--sans);font-weight:500;font-size:clamp(23px,2.7vw,46px);line-height:1.2;letter-spacing:-.02em;color:var(--ink);max-width:17ch;margin-bottom:5vh;padding-top:1vh}
+.hero-prop em{font-style:italic;font-family:var(--serif);font-weight:400;color:var(--coral)}
+.statusbar{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);padding-top:26px;max-width:680px}
+.st{position:relative}
+.st+.st{padding-left:32px}
+.st+.st::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line-soft)}
+.st .k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:9px}
+.st .k .d{width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.st .k .d-green{background:var(--green)}
+.st .v{font-size:15.5px;color:var(--ink);margin-top:9px}
+.st .v small{display:block;font-size:12.5px;color:var(--ink-soft)}
+.hero-photo{justify-self:end;position:relative;z-index:2;margin-bottom:-6vh;display:flex;flex-direction:column;align-items:flex-end;gap:16px}
+.photo-frame{width:min(30vw,350px);aspect-ratio:3/4;border-radius:6px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(43,28,16,.35)}
+.photo-frame img.portrait{width:100%;height:100%;object-fit:cover;object-position:center 26%;display:block}
+.resume-tab{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border:1px solid rgba(43,28,16,.32);border-radius:40px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#2b1c10;background:rgba(255,255,255,.65);transition:.3s}
+.resume-tab b{font-size:14px;transform:rotate(-45deg);transition:.3s}
+.resume-tab:hover{background:var(--brown);color:var(--paper)}
+.resume-tab:hover b{transform:rotate(0)}
+.ph-ico{opacity:.55}
+.ph-note{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;text-align:center;line-height:1.9}
+.mega{font-family:var(--sans);font-weight:800;font-size:clamp(64px,14vw,200px);line-height:.84;letter-spacing:-.035em;margin-top:0;position:relative;z-index:1;white-space:nowrap;color:var(--brown)}
+.mega .me{font-size:.36em;letter-spacing:0;color:var(--ink-faint);vertical-align:top;margin-left:10px}
+.scroll-hint{position:absolute;right:var(--pad);bottom:20px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--ink-soft)}
+
+/* ================= WORKS (modular list) ================= */
+#works{background:var(--white);border-top:1px solid var(--line)}
+.list-note{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px}
+.worklist{max-width:1380px;border-top:1px solid var(--line)}
+.wl{display:grid;grid-template-columns:1fr 190px;gap:clamp(24px,3vw,52px);align-items:center;padding:16px 8px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .4s;position:relative}
+.wl:hover{background:var(--paper)}
+.wl::after{content:"View case study →";position:absolute;right:36px;top:calc(100% - 28px);font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);opacity:0;transform:translateY(8px);transition:.35s}
+.wl:hover::after{opacity:1;transform:none}
+.wl-meta{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);display:flex;gap:14px;flex-wrap:wrap;margin-bottom:7px}
+.wl-meta .tm{color:var(--ink-faint)}
+.wl-title{font-family:var(--serif);font-size:clamp(24px,2.6vw,40px);font-weight:400;letter-spacing:-.01em;line-height:1.05;margin-bottom:9px}
+.wl-desc{color:var(--ink-soft);font-size:15px;max-width:760px;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wl-go{margin-top:14px;display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.wl-go b{font-family:var(--serif);font-size:20px;font-weight:400;transform:rotate(-45deg);transition:.3s}
+.wl:hover .wl-go b{transform:rotate(0)}
+.wl-thumb{width:190px;aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--paper);border:1px solid var(--line);align-self:center}
+.wl-thumb img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s,transform .9s cubic-bezier(.19,.6,.2,1)}
+.wl-thumb img.ok{opacity:1}
+.wl:hover .wl-thumb img{transform:scale(1.06)}
+.wl-thumb .wt{position:absolute;left:10px;top:10px;background:var(--white);padding:5px 11px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ink-soft)}
+
+/* ================= ABOUT ================= */
+#about{background:var(--tan-a);color:#2b1c10}
+#about .secindex{color:#4a3523}
+#about .secindex b{border-color:#2b1c10;color:#2b1c10}
+#about .secindex .hr{background:rgba(43,28,16,.25)}
+#about .h-display{color:#2b1c10}
+#about .h-display em{color:#cf4a7f}
+#about .about-lede{color:#2b1c10}
+#about .about-lede em{color:#cf4a7f}
+#about .about-body p{color:#4a3523}
+#about .about-body p strong{color:#2b1c10;font-weight:600}
+#about .about-sig{color:#2b1c10}
+#about .pill{border-color:#2b1c10;color:#4a3523}
+#about .pill i{color:#cf4a7f}
+#about .const{color:var(--ink)}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start}
+.about-lede{font-family:var(--serif);font-size:clamp(26px,2.8vw,44px);line-height:1.16;letter-spacing:-.01em;margin:0 0 20px}
+.about-lede em{font-style:italic;color:var(--coral)}
+.about-body p{font-size:15.5px;color:var(--ink-soft);margin-bottom:14px}
+.about-body p strong{color:var(--ink)}
+.about-sig{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--ink);margin-top:20px}
+.pills{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+.pill{border:1px solid var(--line);padding:8px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:inline-flex;align-items:center;gap:9px;border-radius:var(--radius)}
+.pill i{font-style:normal}
+.const{background:var(--white);border:1px solid var(--line);padding:26px}
+.const .ck{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.const .ck::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.const-item{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center}
+.const-item .y{font-family:var(--serif);font-size:18px;color:var(--ink-faint);min-width:104px}
+.const-item h4{font-family:var(--serif);font-size:25px;font-weight:400}
+.const-item p{font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+.const-item .loc{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+
+/* ================= SKILLS (modular list) ================= */
+#skills{background:var(--white);border-top:1px solid var(--line)}
+.skilllist{max-width:1380px;border-top:1px solid var(--line)}
+.sk{display:grid;grid-template-columns:56px 1fr;gap:clamp(18px,2vw,36px);padding:16px 8px;border-bottom:1px solid var(--line);align-items:start;transition:background .4s;position:relative}
+.sk:hover{background:var(--paper)}
+.sk-ico{width:52px;height:52px;display:grid;place-items:center}
+.sk-head h3{font-family:var(--serif);font-size:clamp(24px,2.4vw,36px);font-weight:400;letter-spacing:-.01em;margin-bottom:4px}
+.sk-head .role{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
+.sk-items{list-style:none;display:grid;grid-template-columns:1fr 1fr;border-top:1px dashed var(--line-soft);max-width:980px}
+.sk-items li{font-size:14.5px;color:var(--ink);padding:9px 20px 9px 0;border-bottom:1px dashed var(--line-soft);}
+.sk-items li:nth-child(odd){border-right:1px dashed var(--line-soft);padding-right:26px;margin-right:22px}
+
+/* ================= CONTACT ================= */
+.c-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end}
+.c-lede{font-size:17px;color:#4a3523;max-width:520px;margin:20px 0 26px;line-height:1.6}
+.c-link{display:flex;align-items:center;gap:16px;padding:16px 0;border-top:1px solid rgba(43,28,16,.25);font-family:var(--serif);font-size:clamp(20px,2.4vw,30px);color:#2b1c10;transition:.3s;cursor:pointer}
+.c-link:hover{color:#cf4a7f;padding-left:14px}
+.c-link .k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6b4f39;min-width:96px}
+.c-link .ar{margin-left:auto;font-size:22px;transform:rotate(-45deg);transition:.3s}
+.c-link:hover .ar{transform:rotate(0)}
+.c-langs{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.lang{border:1px solid rgba(43,28,16,.3);padding:7px 14px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#4a3523}
+.lang b{color:#2b1c10;font-weight:500}
+.c-avail{display:flex;align-items:flex-start;gap:18px;border:1px solid rgba(43,28,16,.3);padding:20px;background:rgba(255,255,255,.28)}
+.c-avail .dot{width:12px;height:12px;border-radius:50%;background:var(--green);margin-top:6px;animation:pulse 1.6s infinite}
+.c-avail h4{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:6px;color:#2b1c10}
+.c-avail p{font-size:13.5px;color:#4a3523}
+footer.foot{max-width:var(--max);margin:46px auto 0;padding:26px var(--pad) 32px;border-top:1px solid rgba(43,28,16,.22);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#6b4f39}
+.back-top{display:inline-flex;gap:10px;align-items:center;color:#2b1c10;cursor:pointer;transition:color .3s}
+.back-top:hover{color:#cf4a7f}
+
+/* ================= DETAIL ================= */
+#detail{position:fixed;inset:0;z-index:300;background:var(--paper);overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);transition:transform .6s cubic-bezier(.7,0,.2,1)}
+#detail.open{transform:none}
+.d-head{max-width:var(--max);margin:0 auto;padding:20px var(--pad)}
+.d-back{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;padding:14px 22px;border:1px solid var(--line);background:var(--white);transition:.25s;border-radius:var(--radius)}
+.d-back:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.d-hero{max-width:var(--max);margin:60px auto 0;padding:0 var(--pad)}
+.d-title{font-family:var(--serif);font-size:clamp(42px,6vw,96px);letter-spacing:-.02em;line-height:1;max-width:900px;margin:26px 0}
+.d-meta{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 30px}
+.d-tag{border:1px solid var(--line);background:var(--white);padding:8px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-soft)}
+.d-lede{font-size:20px;color:var(--ink-soft);max-width:680px;line-height:1.55}
+.d-stats{display:grid;grid-template-columns:repeat(3,1fr);max-width:var(--max);margin:60px auto 10px;padding:0 var(--pad);gap:1px;background:var(--line);border:1px solid var(--line)}
+.d-stat{background:var(--white);padding:34px;position:relative}
+.d-stat .n{font-family:var(--serif);font-size:clamp(40px,5vw,72px);line-height:1}
+.d-stat .n i{font-style:italic}
+.d-stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-top:10px}
+.d-media{max-width:var(--max);margin:60px auto 0;padding:0 var(--pad)}
+.d-media img{width:100%;height:72vh;object-fit:cover;border:1px solid var(--line)}
+.d-sec{max-width:var(--max);margin:0 auto;padding:80px var(--pad)}
+.d-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.d-sec h3{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:26px;display:flex;align-items:center;gap:14px}
+.d-sec h3::before{content:"";width:34px;height:1px;background:var(--coral)}
+.d-sec h4{font-family:var(--serif);font-size:28px;font-weight:400;margin:30px 0 12px}
+.d-sec .chunk{font-family:var(--serif);font-size:25px;line-height:1.4;color:var(--ink)}
+.d-sec p{font-size:16.5px;color:var(--ink-soft);line-height:1.75}
+.d-bullets{list-style:none;margin-top:6px}
+.d-bullets li{position:relative;padding:14px 0 14px 34px;font-size:16px;color:var(--ink);border-top:1px dashed var(--line-soft)}
+.d-bullets li::before{content:"";position:absolute;left:4px;top:22px;width:12px;height:12px;background:var(--coral)}
+.d-quote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3vw,36px);line-height:1.25;border-left:2px solid var(--coral);padding-left:28px;margin:0 0 30px}
+.d-cause{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.d-cause .box{background:var(--white);border:1px solid var(--line);padding:44px;border-left:3px solid var(--coral)}
+.d-cause h3{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:18px}
+.d-cause p{font-size:17px;color:var(--ink);line-height:1.7}
+.d-next{max-width:var(--max);margin:90px auto 0;padding:40px var(--pad) 0;border-top:1px solid var(--line)}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:1080px){
+  :root{--pad:32px}
+  nav ul{display:none}
+  nav .nav-cta{display:none}
+  .about-grid,.c-grid,.d-grid{grid-template-columns:1fr;gap:40px}
+  .miles{grid-template-columns:1fr 1fr}
+  .wl{grid-template-columns:1fr;gap:26px}
+  .wl-thumb{display:none}
+  .sk{grid-template-columns:56px 1fr;gap:22px}
+  .hero-frame{grid-template-columns:1fr;gap:40px}
+  .hero-left{min-height:auto}
+  .hero-prop{font-size:clamp(21px,3.4vw,30px)}
+  .hero-photo{justify-self:start;margin-bottom:-4vh}
+  .photo-frame{width:min(64vw,380px)}
+  .statusbar{grid-template-columns:1fr;gap:16px;max-width:none}
+  .st+.st{padding-left:0;padding-top:16px}
+  .st+.st::before{width:100%;height:1px;top:0;bottom:auto}
+  .mega{font-size:clamp(56px,15vw,120px)}
+}
+@media(max-width:760px){
+  .wrap{padding:0 22px}
+  .hero-inner{padding-top:14vh}
+  .hero-prop{font-size:clamp(19px,6vw,24px);padding-top:0}
+  .photo-frame{width:min(80vw,320px)}
+  .mega{font-size:clamp(48px,19vw,80px)}
+  .miles{grid-template-columns:1fr}
+  .sk{grid-template-columns:52px 1fr;gap:18px}
+  .sk-items{grid-template-columns:1fr}
+  .sk-items li:nth-child(odd){border-right:none;padding-right:0;margin-right:0}
+  .wl{padding:38px 4px}
+  .d-stats{grid-template-columns:1fr;max-width:100%}
+  .const-item{grid-template-columns:1fr}
+  .d-stats .d-stat{padding:22px}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand">
+      <span class="mark">K</span>
+      <span class="word">KELLY OU<small>Portfolio · 2026</small></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#home"><em>01</em> Home</a></li>
+        <li><a href="#works"><em>02</em> Works</a></li>
+        <li><a href="#skills"><em>03</em> Skill Toolbox</a></li>
+        <li><a href="#cases"><em>04</em> Case Studies</a></li>
+        <li class="drop">
+          <a href="#about"><em>05</em> About</a>
+          <ul class="panel">
+            <li><a href="#about"><span>Overview</span></a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <a href="#about" class="nav-cta">Let's talk</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-frame">
+      <div class="hero-left">
+        <h1 class="hero-prop r in">Product operator with a proven record in <em>growing AI products</em> across global markets — from creator ecosystems to overseas communities.</h1>
+        <div class="statusbar r in d1">
+          <div class="st"><span class="k"><span class="d d-green"></span> Currently</span><div class="v">Available for new projects</div></div>
+          <div class="st"><span class="k"><span class="d"></span> Specialized at</span><div class="v">Product Ops · Growth · Overseas MKT<small>Community · Campaign · Brand</small></div></div>
+          <div class="st"><span class="k"><span class="d"></span> Working globally</span><div class="v">China · Hong Kong<small>Remote · Worldwide</small></div></div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-frame"><img class="portrait" src="portrait.png" alt="Kelly Ou — AI product operations & overseas marketing"></div>
+        <a class="resume-tab" href="resume-en.pdf" target="_blank" rel="noopener">Resume — EN <b>↗</b></a>
+      </div>
+    </div>
+    <div class="mega">KELLY OU <span class="me">©</span></div>
+  </div>
+  <div class="scroll-hint">( scroll for selected work )</div>
+</section>
+
+<!-- ================= WORKS ================= -->
+<section id="works" class="sec">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="secindex r"><b>01</b><i class="hr"></i></div>
+      <h2 class="h-display r d1">Work &amp;<br><em>Experience.</em></h2>
+      <div class="subl r d2"><span>Experience across AI product ops, marketing, growth and community — plus a self-run e-commerce chapter.</span></div>
+    </div>
+    <p class="list-note r d2">Roles from 2021 to now — select any to read the full story</p>
+  </div>
+  <div class="wrap">
+    <div class="worklist" id="workList"></div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="sec">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="secindex r"><b>02</b><i class="hr"></i></div>
+      <h2 class="h-display r d1">Skill<br><em>Toolbox.</em></h2>
+    </div>
+    <p class="list-note r d2">Four concentrated skills — the through-lines I carried across every role, powered by an AI toolchain</p>
+  </div>
+  <div class="wrap">
+    <div class="skilllist" id="skillsList"></div>
+  </div>
+</section>
+
+<!-- ================= CASE STUDIES ================= -->
+<style>
+.cs{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--coral);padding:4px 9px;border-radius:20px;margin-right:6px;vertical-align:middle}
+</style>
+<section id="cases" class="sec">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="secindex r"><b>03</b><i class="hr"></i></div>
+      <h2 class="h-display r d1">Case<br><em>Studies.</em></h2>
+      <div class="subl r d2"><span>Hands-on practical projects — community cold starts, social campaigns and product prototypes I have designed and shipped.</span></div>
+    </div>
+    <p class="list-note r d2">Select any project to read the full case study</p>
+  </div>
+  <div class="wrap">
+    <div class="worklist" id="caseList"></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT & GET IN TOUCH ================= -->
+<section id="about" class="sec">
+  <div class="wrap" style="max-width:1400px">
+    <div class="sechead" style="margin-bottom:40px">
+      <div class="secindex"><b>04</b><i class="hr"></i></div>
+    </div>
+    <div class="c-grid">
+      <div>
+        <h2 class="h-display r d1">About &amp;<br><em>Get in touch.</em></h2>
+        <p class="about-lede" style="margin:28px 0 22px">I sit at the <em>crossroads of people, AI &amp; growth</em> — making complex products feel simple, and turning insight into motion.</p>
+        <div class="about-body">
+          <p>I'm <strong>Kelly Ou</strong>, an AI Product Operations &amp; Overseas Marketing professional. I've shipped creator ecosystems from zero to one, cold-started overseas AI communities, and launched UGC campaigns across Japan / Europe / the US. Multilingual, design-minded, metrics-driven.</p>
+        </div>
+        <div class="pills">
+          <span class="pill"><i>●</i> Growth Strategy</span>
+          <span class="pill"><i>●</i> User Psychology</span>
+          <span class="pill"><i>●</i> AI-native</span>
+          <span class="pill"><i>●</i> 4 Languages</span>
+          <span class="pill"><i>●</i> Design-minded</span>
+        </div>
+        <p class="c-lede" style="margin:34px 0 18px">Building an AI product that needs a growth engine, a community that needs a voice, or a brand that needs a story? I'd love to hear from you.</p>
+        <a class="c-link" href="mailto:oukelly@gmail.com"><span class="k">Email</span> oukelly@gmail.com <span class="ar">→</span></a>
+        <a class="c-link" href="tel:+8613927725916"><span class="k">Phone</span> +86 139 2772 5916 <span class="ar">→</span></a>
+        <a class="c-link" href="https://www.linkedin.com/in/kellyouxuyi" target="_blank" rel="noopener"><span class="k">LinkedIn</span> linkedin.com/in/kellyouxuyi <span class="ar">→</span></a>
+        <div class="c-langs">
+          <span class="lang">Cantonese · <b>Native</b></span>
+          <span class="lang">EN · <b>IELTS 8.0</b></span>
+          <span class="lang">FR · <b>B2</b></span>
+          <span class="lang">KO · <b>L3</b></span>
+        </div>
+      </div>
+      <div class="const r d2">
+        <div class="ck">Education &amp; Path</div>
+        <div class="const-item">
+          <span class="y">2023–24</span>
+          <div><h4>The Chinese University of Hong Kong</h4><p>M.A. Social Science · New Media</p></div>
+          <span class="loc">Hong Kong</span>
+        </div>
+        <div class="const-item">
+          <span class="y">2019–22</span>
+          <div><h4>The Australian National University</h4><p>B.A. · French &amp; Psychology</p></div>
+          <span class="loc">Canberra</span>
+        </div>
+        <div class="c-avail" style="margin-top:34px">
+          <span class="dot"></span>
+          <div>
+            <h4>Currently open to collaborations</h4>
+            <p>AI product operations · growth &amp; go-to-market · community &amp; campaign strategy. Based in Shenzhen &amp; Hong Kong, working globally.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="foot">
+    <span>© 2026 Kelly Ou</span>
+    <a class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top ↑</a>
+  </footer>
+</section>
+
+<!-- ================= DETAIL ================= -->
+<div id="detail">
+  <div class="d-head"><button class="d-back" onclick="closeDetail()">← Back to all works</button></div>
+  <div id="dBody"></div>
+</div>
+
+<script>
+/* ================= DATA ================= */
+const IMG = "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?image_size=landscape_4_3&prompt=";
+const TTI = (p)=> IMG + encodeURIComponent(p + ", premium editorial portfolio artwork, sophisticated muted color palette, clean background, generous negative space, refined high-end composition, no text");
+
+const works = [
+  {id:"ecommerce",tag:"E-commerce · Self-run",title:"To-B → To-C E-commerce",
+   desc:"Running my own e-commerce operation — taking a factory's B2B products to consumer platforms. I own promotion management, product-image renewal and campaign planning, driving ≈¥700K in average monthly GMV.",
+   stats:[["¥700K","Avg monthly GMV"],["To-C","Platform sell-through"],["Self-run","Owned & operated"]],
+   img:"minimal still-life of tidy product packaging beside a gently rising sales curve, muted sand, coral and white",color:"#a5713f",
+   meta:"Self-run · 2025—Now · Founder-track",
+   problem:"B2B manufacturer goods were stuck in wholesale — strong margins but no consumer channel and no direct reach to buyers on To-C platforms.",
+   approach:"I run it like a one-person product company: spot factory goods with consumer appeal, position them on To-C platforms, manage promotion and paid channels, refresh product photography, and take part in platform campaigns — reading the data and iterating weekly, with an AI-assisted workflow for listing copy and creative.",
+   role:["Positioned factory goods for consumer platforms","Owned promotion & paid-channel management","Renewed product images, listing & SEO","Ran platform campaigns & big-day events"],
+   outcome:"Sustained ≈¥700K in average monthly GMV on a fully self-run basis, with a repeatable AI-assisted listing, creative and promotion loop.",
+   quote:"A factory can make great things. A good operator decides who gets to see them."},
+  {id:"xverse",tag:"AI · Product MKT & Creator",title:"XVerse · AI Product MKT & Creator Management",
+   desc:"Owning XVerse's AI product marketing and creator growth end-to-end — a five-tier creator system, a full calendar of creator events, day-to-day community operations and cross-border KOL partnerships.",
+   stats:[["15%","New-creator share held"],["20+","Creator events & campaigns"],["9","Cross-border KOL partners"]],
+   img:"minimal abstract of a rising growth curve with branching creator nodes and layered tier steps, muted coral, warm sand, subtle teal",color:"#e05b8a",
+   meta:"XVerse · 2024–25 · AI Product MKT & Creator",
+   problem:"AI creators had no clear path to grow and no sense of belonging: rewards were reactionary, the community felt empty, and the product was barely visible across markets.",
+   approach:"Owned product marketing and creator management together. Designed the creator growth & tiering system, then fed it day in, day out with themed creator events and activities. On the events specifically, I planned and hosted the whole calendar — writing the brief and example works for each theme, running live co-creation sessions and beginner workshops so newcomers could learn while making something, picking winners with clear exposure and reward mechanics, and looping the best works into campaigns and showcases to give creators a stage. I handled daily community operations across Discord and creator groups, on-boarded and answered creators directly, and brought in cross-border KOLs — all measured on a weekly campaign, funnel and retention loop.",
+   role:["Built & shipped the creator growth & tiering system","Planned & hosted 20+ creator events — themed briefs, co-creation workshops, winner showcases","Ran day-to-day community operations & creator groups","Ran KOL partnerships across JP / EU / US markets"],
+   outcome:"New creators held steady above 15% share, creator events & campaigns fed 20% of all in-app UGC, and 3M+ impressions from events and KOL launches drove 5000+ new users.",
+   quote:"We didn't fight for one more view — we built a ladder that made creators want to climb."},
+  {id:"sensetime",tag:"AI · Overseas Product Ops",title:"SenseTime · AI Product Operations",
+   desc:"Grew an overseas AI product from supply and research to community and buzz — competitive analysis, shipped PRDs, and a cold-start campaign that made the overseas playbook repeatable.",
+   stats:[["+100","Members in 2 weeks"],["30%","Daily-active rate"],["40+","Social assets produced"]],
+   img:"minimal abstract of connected chat bubbles and community nodes floating in muted teal, sand and coral",color:"#8a6b45",
+   meta:"SenseTime · 2024 · AI Product Operations",
+   problem:"A brand-new overseas AI product had zero community moat and no data to guide what to build next.",
+   approach:"Owned competitive research and two PRDs, then cold-started the overseas community — positioning, cross-platform promotion, gamified activation and retention, and KOC seeding — while producing 40+ social assets and supporting the brand-IP campaign that lifted user growth.",
+   role:["Ran 3 competitive & market research studies","Wrote & shipped 2 product requirement docs","Cold-started the overseas community (AARRR)","Produced 40+ social assets & brand-IP support"],
+   outcome:"Overseas community exceeded +100 members in two weeks at 30% daily-activity, and the brand-IP push contributed roughly 50% of the quarter's user growth.",
+   quote:"A community isn't a channel — it's a product you design around the user every day."},
+  {id:"bytedance",tag:"Social · Product & Mkt Ops",title:"ByteDance · TikTok Operations & Marketing",
+   desc:"Growth and engagement at scale on TikTok — themed campaigns, a coupon incentive system and a creator community, inside one of the world's biggest content platforms.",
+   stats:[["1W+","Campaign DAU reach"],["90%","Coupon redemption"],["40W+","Creator engagement"]],
+   img:"minimal abstract of a bright comic board of floating campaign cards and engagement sparks, muted coral, blue and yellow",color:"#c06a5e",
+   meta:"ByteDance · 2021–22 · TikTok Ops & Marketing",
+   problem:"A feature launch needed a fast lift in daily actives plus an engaged creator base, against a crowded platform and a short timeline.",
+   approach:"Signed and managed 6 marketing campaigns and a Spring-Festival coupon system (90% redemption), on-boarded 200+ creators into the community, and helped carry content that tallied 40W+ of engagement.",
+   role:["Ran 6 signed marketing campaigns","Built the Spring-Festival coupon system","Grew & managed a 200+ creator community","Drove content reaching 40W+ likes"],
+   outcome:"Campaigns lifted DAU to 10,000+, the coupon mechanic saw near-full redemption, and the creator community compounded engagement week over week.",
+   quote:"On a platform this big, the operator's job is to make one mechanic carry the whole moment."}
+];
+const cases = [
+  {id:"case-youku",tag:"Event Planning",title:"Youku 11.11 Campaign — Brand Ambassadors",
+   desc:"A pre-Singles-Day integrated plan for Youku: Weibo topic voting, star '11.11 good-thing ambassador' showcases, in-app communities and livestream giveaways — driving sign-ups, engagement and conversion.",
+   stats:[["3×","Ambassador rounds"],["30 day","Campaign window"],["4","In-app community boards"]],
+   img:"minimal abstract of a glowing gift-box exploding into stars and a confetti livestream banner, warm red-gold, blush and cream",color:"#c0434e",
+   meta:"Case Study · 2021 · Event Planning",
+   problem:"Right before Singles' Day, Youku wanted new users, higher retention and paid conversion — but had no celebrity or social–hot-topic campaign to pull a crowd, leaving shopping-fest traffic and idol fanbases untapped.",
+   approach:"I planned a 30-day, three-phase campaign built around an '11.11 good-thing ambassador'. A Weibo topic vote ('Who would you shop with this 11.11?') + forwarding triggers the event; inside the app a dedicated '11.11' community splits into intro / leaderboard / circle / results boards. Fans vote and check in daily to boost a star's popularity points, watch their videos (+1 per 5 minutes), three ambassadors are revealed in sequence with livestream giveaways, and tiered prizes bridge video and shopping — VIP / 88VIP year cards, Taobao coupons and double points.",
+   role:["Campaign concept & theme","Participation flow & schedule","Reward & prize tiers","Promotion channels & pre-launch"],
+   outcome:"An integrated, repeatable growth moment that ties singles-day shoppers to idol fanbases and pushes dwell time through in-app tasks — with a built-in guardrail: measure retention only after the event's traffic cools back to steady state.",
+   quote:"A shopping festival and a fanbase can be the same audience."},
+  {id:"case-women",tag:"Social Campaign",title:"Women's Online Speech Protection",
+   desc:"A Women's Day social campaign to protect women's right to speak online — raising awareness of online verbal abuse through storytelling, expert panels and workshops.",
+   stats:[["30+","Participants & guests"],["5","Expert speakers"],["4","Partner organisations"]],
+   img:"minimal abstract of a raised megaphone beside a shield rising from a cloud of harsh comments, muted rose, terracotta and white",color:"#c06a5e",
+   meta:"Case Study · Campaign · Women's Day",
+   problem:"Women routinely face throttling, violation notices and harassment when they speak on platforms — the issue is silent, normalised and undiscussed.",
+   approach:"I designed the full project plan: an advocacy-led event to surface real stories, recruit previously-harassed speakers, bring in psychologists, lawyers and women's organisations, run an expert-panel talk share and practical safety workshops, and push reach through social media, site and email.",
+   role:["Campaign concept & narrative","Event & workshop design","Partner & speaker outreach","Social / media promotion plan"],
+   outcome:"A structured campaign package that frames online safety as a cause to advocate for, giving a voice to affected women and a venue for real solutions.",
+   quote:"Design can defend a voice as powerfully as it can sell a product."},
+  {id:"case-mind",tag:"Product & UX",title:"AI Mental-health Product — Research & Prototype",
+   desc:"Market analysis plus an initial App prototype and interaction design for an AI mental-health product — from user research and positioning to core user flows and screens.",
+   stats:[["Market & UX","Research-driven"],["Hi-fi","App prototype"],["Flows","Onboarding → care"]],
+   img:"minimal abstract of a calm rounded hexagonal node cradling a small human silhouette, soft lavender, blush and cream",color:"#8f6b9a",
+   meta:"Case Study · Product & App Design",
+   problem:"Mental-health support is scarce, expensive and stigmatised — most people who need help never reach it, and there was no AI-native way in.",
+   approach:"I studied the market opportunity and user pain points, defined positioning, then designed the initial App: information architecture, core interaction flows — gentle onboarding, mood check-ins, AI-guided coping exercises and escalation to human help — and produced clear prototype screens showing how the product should feel.",
+   role:["Market & competitor analysis","User research & positioning","App prototype & interaction design","Core flows: onboarding · check-ins · support"],
+   outcome:"A research-backed product concept turned into a tangible high-fidelity prototype — the market analysis, app wireframe and interaction design all in one.",
+   quote:"When the product is about wellbeing, the interaction design is the product."}
+];
+
+const skills = [
+  {ico:"brand",c:"#e05b8a",bg:"#fbe7f0",title:"Visual Design & Content Strategy",role:"One craft across design and content — every market, every touchpoint",
+   items:[["Campaign key visuals & brand IP · style guide",""],["Posters, UGC templates, badges & event materials",""],["Localised content & curation for HK · JP · EU · US",""],["AI toolchain: PS · AE · ID · Canva · Figma · Midjourney · SD",""]]},
+  {ico:"growth",c:"#8a6b45",bg:"#f3ece1",title:"Campaign & Growth Marketing",role:"Acquisition through creative engines",
+   items:[["Creative challenges & UGC campaigns · JP/EU/US",""],["Tiered rewards & incentive mechanics",""],["KOL / KOC briefs & reference boards",""],["Funnel: CTR · engagement · referrals",""]]},
+  {ico:"community",c:"#c06a5e",bg:"#f7e9e3",title:"Community & Creator Management",role:"Loyalty, belonging and a steady stream of creators",
+   items:[["Creator system design & visual rewards",""],["Creator onboarding & care (1000+ creators)",""],["Discord & creator-community operations",""],["Winners, showcases & retention loops",""]]},
+  {ico:"data",c:"#543727",bg:"#ece4d8",title:"Data-driven Execution & Strategy",role:"Evidence over opinion — every decision has a number",
+   items:[["Metrics-led choices · impressions · DAU · GMV",""],["Campaign & funnel analysis",""],["AI-assisted workflows & weekly iteration",""],["Standardised, repeatable processes",""]]},
+  {ico:"lang",c:"#935f7e",bg:"#f6e8f1",title:"Volunteer Translation & Interpretation",role:"Language as a bridge — for health, and beyond",
+   items:[["Academic translation for a cancer-recovery centre",""],["Papers on how families can better support care after cancer",""],["Oncology insights shared across social media",""],["Live interpreting at multiple industry exhibitions",""]]}
+];
+const SIC = {
+  prod:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 13l4-4 3 3 6-7"/></svg>',
+  ai:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4"/></svg>',
+  growth:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h4l3-7 5 14 3-7h3"/></svg>',
+  brand:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 2l2.4 6L21 9l-5 4 1.4 6.6L12 16l-5.4 3.6L8 13l-5-4 6.6-1z"/></svg>',
+  community:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="3.2"/><path d="M2.5 20c0-3.2 2.7-5 6-5s6 1.8 6 5"/><circle cx="17" cy="9.5" r="2.6"/><path d="M15.5 20c0-1.7 1.3-3 3.5-3s3.5 1.3 3.5 3"/></svg>',
+  local:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 22s7-6.4 7-12a7 7 0 10-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="10" r="2.8"/></svg>',
+  data:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 20h18"/><path d="M6 20v-6M11 20V7M16 20v-10"/></svg>',
+  strategy:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>',
+  lang:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>'
+};
+
+/* ================= BUILD WORKS (modular list) ================= */
+const wl = document.getElementById("workList");
+works.forEach((w,idx)=>{
+  const c=document.createElement("article");c.className="wl";c.dataset.id=w.id;
+  const meta=String(w.meta);
+  const [tag, co_yr] = meta.split(" · ");
+  c.innerHTML=`
+    <div class="wl-main">
+      <div class="wl-meta"><span>${w.tag}</span><span class="tm">${co_yr||meta}</span></div>
+      <h3 class="wl-title">${w.title}</h3>
+      <p class="wl-desc">${w.desc}</p>
+      <span class="wl-go">View case study <b>→</b></span>
+    </div>
+    <div class="wl-thumb"><span class="wt">CASE STUDY</span>
+      <img data-img data-p="${w.img}" alt="${w.title}"></div>`;
+  c.addEventListener("click",()=>openDetail(w.id));
+  wl.appendChild(c);
+  const img=c.querySelector("[data-img]");
+  img.onload=()=>img.classList.add("ok");
+  img.src=TTI(img.dataset.p);
+});
+
+/* ================= BUILD CASES (modular list) ================= */
+const cl=document.getElementById("caseList");
+cases.forEach(w=>{
+  const c=document.createElement("article");c.className="wl";c.dataset.id=w.id;
+  const meta=String(w.meta);
+  const [tag, co_yr] = meta.split(" · ");
+  c.innerHTML=`
+    <div class="wl-main">
+      <div class="wl-meta"><span class="cs">Case Study</span><span>${w.tag}</span><span class="tm">${co_yr||meta}</span></div>
+      <h3 class="wl-title">${w.title}</h3>
+      <p class="wl-desc">${w.desc}</p>
+      <span class="wl-go">Open case study <b>→</b></span>
+    </div>
+    <div class="wl-thumb"><span class="wt">Project</span>
+      <img data-img data-p="${w.img}" alt="${w.title}"></div>`;
+  c.addEventListener("click",()=>openDetail(w.id));
+  cl.appendChild(c);
+  const img=c.querySelector("[data-img]");
+  img.onload=()=>img.classList.add("ok");
+  img.src=TTI(img.dataset.p);
+});
+
+/* ================= BUILD SKILLS (modular list) ================= */
+document.getElementById("skillsList").innerHTML=skills.map((s,i)=>`
+  <div class="sk r" style="transition-delay:${(i%3)*.08}s">
+    <span class="sk-ico" style="color:${s.c};background:${s.bg}">${SIC[s.ico]}</span>
+    <div class="sk-head">
+      <h3>${s.title}</h3>
+      <div class="role">${s.role}</div>
+      <ul class="sk-items">${s.items.map(([a])=>`<li>${a}</li>`).join("")}</ul>
+    </div>
+  </div>`).join("");
+
+/* ================= SCROLL: progress + nav + reveal ================= */
+const nav=document.querySelector(".nav");
+const bar=document.getElementById("progress");
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".r").forEach(el=>io.observe(el));
+
+function updateChrome(){
+  const st=window.scrollY||document.documentElement.scrollTop;
+  const h=(document.documentElement.scrollHeight||1)-innerHeight;
+  const pct=Math.min(100,Math.max(0,(st/h)*100));
+  bar.style.width=pct+"%";
+  nav.classList.toggle("scrolled",st>40);
+}
+window.addEventListener("scroll",updateChrome,{passive:true});
+window.addEventListener("load",updateChrome);
+updateChrome();
+
+/* reveal with stagger for skill cards already via dynamic transition-delay */
+/* ================= DETAIL ================= */
+const detail=document.getElementById("detail");
+const pool=[].concat(works,cases);
+function openDetail(id){
+  const w=pool.find(x=>x.id===id)||pool[0];
+  document.getElementById("dBody").innerHTML=`
+    <div class="d-hero">
+      <div class="secindex"><b>Role</b> ${w.meta} <i class="hr"></i></div>
+      <h1 class="d-title">${w.title}</h1>
+      <div class="d-meta">${String(w.tag).split("·").map(t=>`<span class="d-tag">${t.trim()}</span>`).join("")}</div>
+      <p class="d-lede">${w.desc}</p>
+      <div class="d-stats">${w.stats.map(s=>`<div class="d-stat"><div class="n"><i>${s[0]}</i></div><div class="l">${s[1]}</div></div>`).join("")}</div>
+    </div>`;
+  const sec=`
+    <div class="d-media"><img src="${TTI(w.img)}" alt="${w.title}"></div>
+    <div class="d-sec">
+      <div class="d-grid">
+        <div>
+          <h3>The Context</h3>
+          <p class="chunk">${w.problem}</p>
+          <div class="d-quote">${w.quote}</div>
+        </div>
+        <div>
+          <h3>My Approach</h3>
+          <p>${w.approach}</p>
+          <h4>What I owned</h4>
+          <ul class="d-bullets">${w.role.map(r=>`<li>${r}</li>`).join("")}</ul>
+        </div>
+      </div>
+    </div>
+    <div class="d-cause"><div class="box">
+      <h3>The Impact</h3><p>${w.outcome}</p>
+    </div></div>
+    <div class="d-next">`;
+  document.getElementById("dBody").insertAdjacentHTML("beforeend",sec);
+  const i=pool.findIndex(x=>x.id===w.id);
+  const nw=pool[(i+1)%pool.length];
+  document.querySelector(".d-next").innerHTML=`
+    <p class="secindex"><b>Next</b> Next role <i class="hr"></i></p>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;margin:22px 0 60px;cursor:pointer;flex-wrap:wrap" onclick="openDetail('${nw.id}')">
+      <h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,54px);letter-spacing:-.01em">${nw.title} →</h2>
+      <p style="color:var(--ink-soft);max-width:420px;font-size:15px">${nw.desc}</p>
+    </div>`;
+  detail.classList.add("open");
+  document.body.classList.add("locked");
+  detail.scrollTop=0;
+}
+function closeDetail(){
+  detail.classList.remove("open");
+  document.body.classList.remove("locked");
+}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDetail()});
+</script>
+</body>
+</html>
